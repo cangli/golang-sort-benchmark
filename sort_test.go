@@ -1,11 +1,19 @@
 package golang_sort_benchmark
 
-import (
-	"testing"
-)
+import "testing"
 
-var arrLength int = 50000
+var arrLength int = 5000
 
+//func TestA(t *testing.T){
+//	arr := randomArr(50)
+//	fmt.Println(arr)
+//	fmt.Println(bubbleSort(shuffle(arr)))
+//	fmt.Println(insertionSort(shuffle(arr)))
+//	fmt.Println(selectionSort(shuffle(arr)))
+//	fmt.Println(mergeSortMain(shuffle(arr)))
+//	fmt.Println(quickSortMain(shuffle(arr)))
+//	fmt.Println(heapSort(shuffle(arr)))
+//}
 func BenchmarkBubbleSort(b *testing.B) {
 	for i:=0;i<b.N;i++{
 		b.StopTimer()
@@ -48,5 +56,14 @@ func BenchmarkQuickSort(b *testing.B){
 		arr := randomArr(arrLength)
 		b.StartTimer()
 		quickSortMain(arr)
+	}
+}
+
+func BenchmarkHeapSort(b *testing.B){
+	for i:=0;i<b.N;i++{
+		b.StopTimer()
+		arr := randomArr(arrLength)
+		b.StartTimer()
+		heapSort(arr)
 	}
 }

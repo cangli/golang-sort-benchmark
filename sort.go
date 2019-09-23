@@ -1,7 +1,6 @@
 package golang_sort_benchmark
 
 import (
-	"fmt"
 	"math/rand"
 	//"sort"
 )
@@ -133,12 +132,44 @@ func shuffle(arr []int)[]int{
 	return arr
 }
 
+func heapSort(arr []int)[]int{
+	buildHeap(arr)
+	for k:=len(arr)-1;k>=0;k--{
+		arr[k], arr[0] = arr[0], arr[k]
+		heapify(arr[:k], 0)
+	}
+	return arr
+}
+
+func buildHeap(arr []int){
+	for i := len(arr) / 2;i>=0;i--{
+		heapify(arr, i)
+	}
+}
+
+func heapify(arr []int, i int){
+	for{
+		maxPos := i
+		if 2*i+1<len(arr) && arr[2*i+1] > arr[maxPos]{
+			maxPos = 2*i+1
+		}
+		if 2*i+2<len(arr) && arr[2*i+2] > arr[maxPos]{
+			maxPos = 2*i+2
+		}
+		if maxPos == i{
+			break
+		}
+		arr[i], arr[maxPos] = arr[maxPos], arr[i]
+		i = maxPos
+	}
+}
+
 func main(){
-	arr := randomArr(50)
-	fmt.Println(arr)
-	fmt.Println(bubbleSort(shuffle(arr)))
-	fmt.Println(insertionSort(shuffle(arr)))
-	fmt.Println(selectionSort(shuffle(arr)))
-	fmt.Println(mergeSortMain(shuffle(arr)))
-	fmt.Println(quickSortMain(shuffle(arr)))
+	//arr := randomArr(50)
+	//fmt.Println(arr)
+	//fmt.Println(bubbleSort(shuffle(arr)))
+	//fmt.Println(insertionSort(shuffle(arr)))
+	//fmt.Println(selectionSort(shuffle(arr)))
+	//fmt.Println(mergeSortMain(shuffle(arr)))
+	//fmt.Println(quickSortMain(shuffle(arr)))
 }
