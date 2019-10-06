@@ -2,7 +2,7 @@ package golang_sort_benchmark
 
 import "testing"
 
-var arrLength int = 5000
+var arrLength int = 50000
 
 //func TestA(t *testing.T){
 //	arr := randomArr(50)

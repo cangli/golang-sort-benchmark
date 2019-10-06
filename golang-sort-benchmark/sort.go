@@ -42,7 +42,7 @@ func selectionSort(arr []int)[]int{
 func randomArr(n int)[]int{
 	out := make([]int, 0, n)
 	for i:=0;i<n;i++{
-		out = append(out, rand.Intn(50))
+		out = append(out, rand.Intn(n))
 	}
 	return out
 }
